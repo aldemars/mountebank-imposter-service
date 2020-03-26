@@ -32,8 +32,9 @@ steps:
   - task: DockerCompose@0
     inputs:
       containerregistrytype: 'Azure Container Registry'
-      azureSubscription: 'Pre Agendamiento (ba10e75d-9812-4287-851a-a380629158f0)'
+      azureSubscription: 'App Service Azure'
       azureContainerRegistry: '{"loginServer":"preagendamiento.azurecr.io", "id" : "/subscriptions/ba10e75d-9812-4287-851a-a380629158f0/resourceGroups/pre-agendamiento-front/providers/Microsoft.ContainerRegistry/registries/preagendamiento"}'
       dockerComposeFile: '**/docker-compose.yml'
-      action: 'Run services'
+      action: 'Run a Docker Compose command'
+      dockerComposeCommand: 'up'
 
