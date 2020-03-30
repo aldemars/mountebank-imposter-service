@@ -11,11 +11,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:42000/api/centros/",
+					"raw": "impostors.azurewebsites.net/api/centros/",
 					"host": [
-						"localhost"
+						"impostors.azurewebsites.net"
 					],
-					"port": "42000",
 					"path": [
 						"api",
 						"centros",
