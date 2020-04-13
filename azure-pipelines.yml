@@ -54,4 +54,26 @@ stages:
         DockerNamespace: 'preagendamiento.azurecr.io'
         DockerRepository: 'mbimposterserviceimage'
         DockerImageTag: '$(tag)'
+- stage: Deploy_Prod
+  displayName: Deploy Impostors prod
+  jobs:  
+  - job: Deploy
+    displayName: Deploy
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    - task: ManualIntervention@8
+      inputs:
+        instructions: 'Approvals'
+        emailRecipients: 'ahernand@thoughtworks.com'
+    - task: AzureRmWebAppDeployment@4
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'Pre Agendamiento (ba10e75d-9812-4287-851a-a380629158f0)'
+        appType: 'webAppContainer'
+        WebAppName: 'impostors'
+        DockerNamespace: 'preagendamiento.azurecr.io'
+        DockerRepository: 'mbimposterserviceimage'
+        DockerImageTag: '$(tag)'
+
 
