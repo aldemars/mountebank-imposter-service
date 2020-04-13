@@ -54,27 +54,5 @@ stages:
         DockerNamespace: 'preagendamiento.azurecr.io'
         DockerRepository: 'mbimposterserviceimage'
         DockerImageTag: '$(tag)'
-- stage: Deploy_Prod
-  displayName: Deploy Impostors prod
-  jobs:
-    
-  - deployment: Deploy
-    displayName: Deploy
-    environment: 'emptyenv'
-    pool:
-      vmImage: $(vmImageName)
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-            - task: AzureRmWebAppDeployment@4
-              inputs:
-                ConnectionType: 'AzureRM'
-                azureSubscription: 'Pre Agendamiento (ba10e75d-9812-4287-851a-a380629158f0)'
-                appType: 'webAppContainer'
-                WebAppName: 'impostors'
-                DockerNamespace: 'preagendamiento.azurecr.io'
-                DockerRepository: 'mbimposterserviceimage'
-                DockerImageTag: '$(tag)'
 
 
